@@ -43,7 +43,7 @@ pipeline {
 				ok 'Hagamoslo!'
 				parameters{
 					string{
-						name:"TARGET",
+						name:"TARGET_ENVIRONMENT",
 						defaultValue:"PROD",
 						description:"En que ambiente se hará el Deploy"
 					}
@@ -53,7 +53,7 @@ pipeline {
 				sh '''
 					echo ''Deploy step''
 				'''
-				echo "Deploying in environment ${TARGET}"
+				echo "Deploying in environment ${TARGET_ENVIRONMENT}"
 			}
 		}
 	}
