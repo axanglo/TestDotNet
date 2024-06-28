@@ -27,12 +27,33 @@ pipeline {
 			}
 		}
 
+		stage('Test'){
+			agent any
+			environment{
+				LOG_LEVEL="ALL"
+			}
+			steps{
+				echo "Test with log level : ${LOG_LEVEL}"
+			}
+		}
+
 		stage('Deploy'){
+			input{
+				message 'Ejecutar el proceso de deploy o abortar?'
+				ok 'Hagamoslo!'
+				parameters{
+					string{
+						name:"TARGET",
+						defaultValue:"PROD",
+						description:"En que ambiente se hará el Deploy"
+					}
+				}
+			}
 			steps{
 				sh '''
-					ls
 					echo ''Deploy step''
 				'''
+				echo "Deploying in environment ${TARGET}"
 			}
 		}
 	}
@@ -43,6 +64,10 @@ pipeline {
 		}
 		failure{
 			echo 'Pipeline failure'
+		}
+
+		always{
+			echo 'Fin en Always'
 		}
 	}
 }
