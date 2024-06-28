@@ -25,9 +25,6 @@ pipeline {
 			environment {
                 LOG_LEVEL='INFO'
             }
-			steps{
-					sh 'echo "Build step on my ENV: "$MY_ENV_VAR""'
-			}
 			parallel {
                 stage('linux-arm64') {
                     agent any
