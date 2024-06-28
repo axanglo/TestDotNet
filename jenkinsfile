@@ -1,0 +1,51 @@
+pipeline {
+	agent any
+
+	environment{
+		MY_ENV_VAR = 'Ambiente Alex 1'
+	}
+
+	stages {
+		stage('Checkout'){
+			steps{
+				script{
+					//clone GIT repository
+					def gitRepoUrl = 'https://github.com/axanglo/TestDotNet.git'
+
+					checkout([$class: 'GitSCM',
+						branches:[[name:'*/main']],
+						userRemoteConfigs:[[url:girRepoUrl]],
+						extensions:[[$class:'CleanBeforeCheckout'], [$class:'CloneOption', noTags:false, shallow:true, depth:1]]
+					])
+				}
+			}
+		}
+
+		stage('Build'){
+			steps{
+				sh '''
+					ls
+					echo ''Build step''
+				'''
+			}
+		}
+
+		stage('Deploy'){
+			steps{
+				sh '''
+					pwd
+					echo ''Deploy step''
+				'''
+			}
+		}
+	}
+
+	post{
+		success{
+			echo 'Pipeline success'
+		}
+		failure{
+			echo 'Pipeline failure'
+		}
+	}
+}

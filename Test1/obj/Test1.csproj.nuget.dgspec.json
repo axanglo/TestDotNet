@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AAngulo\\source\\repos\\Test1\\Test1.csproj": {}
+    "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AAngulo\\source\\repos\\Test1\\Test1.csproj": {
+    "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AAngulo\\source\\repos\\Test1\\Test1.csproj",
+        "projectUniqueName": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj",
         "projectName": "Test1",
-        "projectPath": "C:\\Users\\AAngulo\\source\\repos\\Test1\\Test1.csproj",
+        "projectPath": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj",
         "packagesPath": "C:\\Users\\AAngulo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AAngulo\\source\\repos\\Test1\\obj\\",
+        "outputPath": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AAngulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
