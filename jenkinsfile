@@ -42,11 +42,11 @@ pipeline {
 				message 'Ejecutar el proceso de deploy o abortar?'
 				ok 'Hagamoslo!'
 				parameters{
-					string{
-						name:"TARGET_ENVIRONMENT",
-						defaultValue:"PROD",
-						description:"En que ambiente se hará el Deploy"
-					}
+					string(
+						name:'TARGET_ENVIRONMENT',
+						defaultValue:'PROD',
+						description:'En que ambiente se hará el Deploy'
+					)
 				}
 			}
 			steps{
