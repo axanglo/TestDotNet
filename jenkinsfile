@@ -23,17 +23,14 @@ pipeline {
 
 		stage('Build'){
 			steps{
-				sh '''
-					ls
-					echo ''Build step''
-				'''
+					sh 'echo "Build step on my ENV: "$MY_ENV_VAR""'
 			}
 		}
 
 		stage('Deploy'){
 			steps{
 				sh '''
-					pwd
+					ls
 					echo ''Deploy step''
 				'''
 			}
