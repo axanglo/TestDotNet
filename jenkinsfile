@@ -3,6 +3,7 @@ pipeline {
 
 	environment{
 		MY_ENV_VAR = 'Ambiente Alex 1'
+		RELEASE = '1.0'
 	}
 
 	stages {
