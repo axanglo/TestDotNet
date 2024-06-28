@@ -50,9 +50,6 @@ pipeline {
 				}
 			}
 			steps{
-				sh '''
-					echo ''Deploy step''
-				'''
 				echo "Deploying in environment ${TARGET_ENVIRONMENT}"
 			}
 		}
