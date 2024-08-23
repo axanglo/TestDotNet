@@ -17,5 +17,28 @@ pipeline {
 				}
 			}
         }
+		
+		stage('Test') {
+            steps {
+                sh '''
+				dotnet clean
+				dotnet test
+                '''
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                dotnet msbuild
+				'''
+
+                archiveArtifacts('**/*.dll')
+
+                script {
+					DOCKERIMAGE = docker.build IMAGENAME + ":" + RELEASE
+				}
+            }
+        }
     }
 }
