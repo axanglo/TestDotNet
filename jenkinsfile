@@ -21,8 +21,8 @@ pipeline {
 		stage('Test') {
             steps {
                 script {
-					    bat "dotnet clean"
-						bat "dotnet test"
+					    bat "dotnet clean Test1"
+						bat "dotnet test Test1"
 				}
             }
         }
