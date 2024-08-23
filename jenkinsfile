@@ -1,94 +1,23 @@
 pipeline {
-	agent any
+    agent any
 
-	environment{
-		MY_ENV_VAR = 'Ambiente Alex 1'
-		RELEASE = '1.0'
-	}
+    environment {
+        APP = 'WebApi ICDataPrep'
+		RELEASE = '1.0.0'
+		IMAGENAME = "webapi_icdataprep"
+		DOCKERIMAGE = ''
+    }
 
-	stages {
-		stage('Checkout'){
-			steps{
-				script{
-					//clone GIT repository
-					def gitRepoUrl = 'https://github.com/axanglo/TestDotNet.git'
-
-					checkout([$class: 'GitSCM',
-						branches:[[name:'*/main']],
-						userRemoteConfigs:[[url:gitRepoUrl]],
-						extensions:[[$class:'CleanBeforeCheckout'], [$class:'CloneOption', noTags:false, shallow:true, depth:1]]
-					])
+    stages {
+        
+        stage('Deploy') {
+            steps {
+                echo "Desplegando imagen ${APP} release ${RELEASE}"
+				script {
+					    bat "dotnet --version"
+					}
 				}
-			}
-		}
-
-		stage('Build'){
-			environment {
-                LOG_LEVEL='INFO'
             }
-			parallel {
-                stage('linux-arm64') {
-                    agent any
-                    steps {
-                        echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
-                        sh 'sleep 10'
-                    }
-                }
-                stage('linux-amd64') {
-                    agent any
-                    steps {
-                        echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
-                        sh 'sleep 20'
-                    }
-                }
-                stage('windows-amd64') {
-                    agent any
-                    steps {
-                        echo "Building release ${RELEASE} for ${STAGE_NAME} with log level ${LOG_LEVEL}..."
-                        sh 'sleep 30'
-                    }
-                }
-            }
-		}
-
-		stage('Test'){
-			agent any
-			environment{
-				LOG_LEVEL="ALL"
-			}
-			steps{
-				echo "Test with log level : ${LOG_LEVEL}"
-			}
-		}
-
-		stage('Deploy'){
-			input{
-				message 'Ejecutar el proceso de deploy o abortar?'
-				ok 'Hagamoslo!'
-				parameters{
-					string(
-						name:'TARGET_ENVIRONMENT',
-						defaultValue:'PROD',
-						description:'En que ambiente se hará el Deploy'
-					)
-				}
-			}
-			steps{
-				echo "Deploying in environment ${TARGET_ENVIRONMENT}"
-			}
-		}
-	}
-
-	post{
-		success{
-			echo 'Pipeline success'
-		}
-		failure{
-			echo 'Pipeline failure'
-		}
-
-		always{
-			echo 'Fin en Always'
-		}
-	}
+        }
+    }
 }
