@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj": {}
+    "C:\\Users\\AAngulo\\repos\\TestDotNet\\Test1\\Test1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj": {
+    "C:\\Users\\AAngulo\\repos\\TestDotNet\\Test1\\Test1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj",
+        "projectUniqueName": "C:\\Users\\AAngulo\\repos\\TestDotNet\\Test1\\Test1.csproj",
         "projectName": "Test1",
-        "projectPath": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\Test1.csproj",
+        "projectPath": "C:\\Users\\AAngulo\\repos\\TestDotNet\\Test1\\Test1.csproj",
         "packagesPath": "C:\\Users\\AAngulo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AAngulo\\Source\\Repos\\axanglo\\TestDotNet\\Test1\\obj\\",
+        "outputPath": "C:\\Users\\AAngulo\\repos\\TestDotNet\\Test1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\AAngulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -26,8 +26,8 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -43,8 +43,8 @@
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "imports": [
             "net461",
             "net462",
@@ -56,12 +56,18 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[3.1.32, 3.1.32]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
