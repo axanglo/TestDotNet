@@ -33,11 +33,9 @@ pipeline {
 					    bat "dotnet msbuild Test1"
 				}
 
-                archiveArtifacts('**/*.dll')
+                archiveArtifacts('Test1/**/*.exe')
 
-                script {
-					DOCKERIMAGE = docker.build IMAGENAME + ":" + RELEASE
-				}
+                
             }
         }
     }
