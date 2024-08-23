@@ -29,9 +29,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh '''
-                dotnet msbuild
-				'''
+                script {
+					    bat "dotnet msbuild Test1"
+				}
 
                 archiveArtifacts('**/*.dll')
 
