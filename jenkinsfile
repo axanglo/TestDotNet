@@ -9,15 +9,13 @@ pipeline {
     }
 
     stages {
-        
         stage('Deploy') {
             steps {
                 echo "Desplegando imagen ${APP} release ${RELEASE}"
 				script {
 					    bat "dotnet --version"
-					}
 				}
-            }
+			}
         }
     }
 }
