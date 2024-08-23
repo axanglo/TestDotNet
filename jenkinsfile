@@ -20,10 +20,10 @@ pipeline {
 		
 		stage('Test') {
             steps {
-                sh '''
-				dotnet clean
-				dotnet test
-                '''
+                script {
+					    bat "dotnet clean"
+						bat "dotnet test"
+				}
             }
         }
 
