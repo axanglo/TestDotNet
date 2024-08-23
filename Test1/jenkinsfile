@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    environment {
+        APP = 'WebApi ICDataPrep'
+		RELEASE = '1.0.0'
+		IMAGENAME = "webapi_icdataprep"
+		DOCKERIMAGE = ''
+    }
+
+    stages {
+        stage('Deploy') {
+            steps {
+                echo "Desplegando imagen ${APP} release ${RELEASE}"
+				script {
+					    bat "dotnet --version"
+				}
+			}
+        }
+		
+		stage('Test') {
+            steps {
+                script {
+					    bat "dotnet clean"
+						bat "dotnet test"
+				}
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh '''
+                dotnet msbuild
+				'''
+
+                archiveArtifacts('**/*.dll')
+
+                script {
+					DOCKERIMAGE = docker.build IMAGENAME + ":" + RELEASE
+				}
+            }
+        }
+    }
+}
