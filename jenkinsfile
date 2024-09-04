@@ -9,34 +9,59 @@ pipeline {
     }
 
     stages {
+		stage('Checkout') {
+            steps {
+                script {
+                    def gitRepoUrl='https://github.com/axanglo/TestDotNet.git'
+					def gitRepoUrl2='https://github.com/axanglo/Git_training_v1.git'
+                    
+                    checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/main']], 
+                        userRemoteConfigs: [[credentialsId: 'axanglo', url: gitRepoUrl]], 
+                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                    ])
+
+					checkout([$class: 'GitSCM', 
+                        branches: [[name: '*/main']], 
+                        userRemoteConfigs: [[credentialsId: 'axanglo', url: gitRepoUrl2]], 
+                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                    ])					
+                }
+            }
+        }
+		
         stage('Deploy') {
             steps {
-                echo "Desplegando imagen ${APP} release ${RELEASE}"
-				script {
-					    bat "dotnet --version"
-				}
+			    script {
+				    pwd
+					ls
+			    }
+                //echo "Desplegando imagen ${APP} release ${RELEASE}"
+				//script {
+				//	    bat "dotnet --version"
+				//}
 			}
         }
 		
-		stage('Test') {
-            steps {
-                script {
-					    bat "dotnet clean Test1"
-						bat "dotnet test Test1"
-				}
-            }
-        }
+		//stage('Test') {
+          //  steps {
+            //    script {
+			//		    bat "dotnet clean Test1"
+			//			bat "dotnet test Test1"
+			//	}
+            //}
+        //}
 
-        stage('Build') {
-            steps {
-                script {
-					    bat "dotnet msbuild -property:Configuration=Release Test1"
-				}
+        //stage('Build') {
+          //  steps {
+            //    script {
+			//		    bat "dotnet msbuild -property:Configuration=Release Test1"
+			//	}
 
-                archiveArtifacts('Test1/bin/Release/netcoreapp3.1/**/*.*')
+              //  archiveArtifacts('Test1/bin/Release/netcoreapp3.1/**/*.*')
 
                 
-            }
-        }
+            //}
+        //}
     }
 }
