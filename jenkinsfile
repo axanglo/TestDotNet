@@ -18,23 +18,27 @@ pipeline {
                     checkout([$class: 'GitSCM', 
                         branches: [[name: '*/main']], 
                         userRemoteConfigs: [[credentialsId: 'axanglo', url: gitRepoUrl]], 
-                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1],[$class: 'RelativeTargetDirectory', relativeTargetDir: 'repo1']]
                     ])
 
 					checkout([$class: 'GitSCM', 
                         branches: [[name: '*/main']], 
                         userRemoteConfigs: [[credentialsId: 'axanglo', url: gitRepoUrl2]], 
-                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1]]
+                        extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'CloneOption', noTags: false, shallow: true, depth: 1],[$class: 'RelativeTargetDirectory', relativeTargetDir: 'repo2']]
                     ])					
                 }
             }
         }
 		
-        stage('Deploy') {
-            steps {
-				script {
-				    dir
-				}
+		
+		
+
+
+        //stage('Deploy') {
+          //  steps {
+			//	script {
+			//	    dir
+			//	}
 			    //sh '''#!/bin/bash
                 //    ls
 				//	pwd
@@ -43,8 +47,8 @@ pipeline {
 				//script {
 				//	    bat "dotnet --version"
 				//}
-			}
-        }
+			//}
+        //}
 		
 		//stage('Test') {
           //  steps {
