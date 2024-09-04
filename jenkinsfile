@@ -32,10 +32,10 @@ pipeline {
 		
         stage('Deploy') {
             steps {
-			    script {
-				    pwd
-					ls
-			    }
+			    sh '''#!/bin/bash
+                    ls
+					pwd
+                '''
                 //echo "Desplegando imagen ${APP} release ${RELEASE}"
 				//script {
 				//	    bat "dotnet --version"
